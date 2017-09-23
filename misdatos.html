@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Contiene todos los .js y .css que necesita la App (entre ellos Bootstrap) -->
+    <script src="js/header_tags.js"></script>
+    <script>app_title_tag();</script>
+  </head>
+  <body>
+	<!-- Llama al Menú Principal -->
+	<script>menu_principal();</script>
+
+	<div id="app" class="container top-offset-menu">
+		<h4>Mis datos</h4>
+		<form v-on:submit.prevent="agregarUsuario">
+			<div class="form-group">
+				<label>Nombres</label>
+				<input type="text" v-model="nombres" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Apellidos</label>
+				<input type="text" v-model="apellidos" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Cédula</label>
+				<input type="text" v-model="cedula" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Correo electrónico</label>
+				<input type="text" v-model="correo" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Contraseña</label>
+				<input type="password" v-model="password" class="form-control">
+			</div>
+			<div class="form-group">
+				<button class="btn btn-success btn-block" v-on:click="guardarUsuario" :disabled="!habilitarBoton">Guardar</button>
+			</div>
+		</form>
+	</div>
+	<script src="js/footer_tags.js"></script>
+    <script>
+    	var vm = new Vue({
+    		el:"#app",
+    		data:{
+    			nombres:"Juan Camilo",
+    			apellidos:"Perez Lozada",
+    			cedula:"6609434",
+    			correo:"camilo@gmail.com",
+    			password:"*****",
+    			usuarioGuardado:""
+    		},
+    		methods:{
+    			guardarUsuario: function(){
+    				this.usuarioGuardado = "guardado"
+    			}
+    		},
+    		computed:{
+    			habilitarBoton: function(){
+    				if (this.nombres != '' && this.apellidos != '' && this.cedula != '' && this.correo != '' && this.password != '') {
+    					return true
+    				} else {
+    					return false
+    				}
+    			}
+    		}
+    	})
+    </script>
+  </body>
+</html>

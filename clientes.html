@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Contiene todos los .js y .css que necesita la App (entre ellos Bootstrap) -->
+    <script src="js/header_tags.js"></script>
+    <script>app_title_tag();</script>
+  </head>
+  <body>
+		<!-- Llama al Menú Principal -->
+		<script>menu_principal();</script>
+
+		<div id="app" class="container top-offset-menu">
+			<div class="row">
+				<div class="col-md-6"><h4>Clientes</h4></div>
+				<div class="col-md-6 text-right"><a href="cliente-nuevo.html" class="btn btn-success">Nuevo</a></div>
+			</div>
+			<br>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Tipo</th>
+						<th>Número</th>
+						<th>Nombre</th>
+						<th>Apellidos</th>
+						<th>Teléfono</th>
+						<th>Opciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>C.C.</td>
+						<td>123456789</td>
+						<td>Eugenio</td>
+						<td>Gómez</td>
+						<td>3214785698</td>
+						<td><a href="#" class="btn btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+					</tr>
+					<tr>
+						<td>C.C.</td>
+						<td>987654321</td>
+						<td>Aldair</td>
+						<td>Guarupe</td>
+						<td>3102365874</td>
+						<td><a href="#" class="btn btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+					</tr>
+					<tr>
+						<td>NIT.</td>
+						<td>9999999-3</td>
+						<td>Cosechadora Oriente SAS</td>
+						<td></td>
+						<td>6325969</td>
+						<td><a href="#" class="btn btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+    <script src="js/footer_tags.js"></script>
+    <script>
+    	var vm = new Vue({
+    		el:"#app",
+    		data:{
+    			titulo:"",
+    			nombres:"",
+    			apellidos:"",
+    			tipoidentificacion:"",
+    			cedula:"",
+    			direccion:"",
+    			barrio:"",
+    			departamento:"",
+    			ciudad:"",
+    			celular:"",
+    			telefonofijo:"",
+    			usuarioGuardado:""
+    		},
+    		methods:{
+    			guardarUsuario: function(){
+    				this.usuarioGuardado = "guardado"
+    			}
+    		},
+    		computed:{
+    			habilitarBoton: function(){
+    				if (this.nombres != '' && this.apellidos != '' && this.cedula != '' && this.correo != '' && this.password != '') {
+    					return true
+    				} else {
+    					return false
+    				}
+    			}
+    		}
+    	})
+    </script>
+  </body>
+</html>

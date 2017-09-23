@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Contiene todos los .js y .css que necesita la App (entre ellos Bootstrap) -->
+    <script src="js/header_tags.js"></script>
+    <script>app_title_tag();</script>
+  </head>
+  <body>
+		<!-- Llama al Menú Principal -->
+        <script>menu_principal();</script>
+
+		<div id="app" class="container top-offset-menu">
+			<h4>Nueva proforma</h4>
+			<form class="form-group" method="post" action="mpdf-proforma.php" enctype="multipart/form-data">
+				<div class="form-group">
+					<label>Número de identificación (C.C. o NIT.)</label>
+					<input type="text" v-model="cedula" name="cedula" v-on:keyup="buscarCliente" class="form-control">
+                    <span v-if="clienteEncontrado != 'ENCONTRADO' && clienteEncontrado != '' " v-html="clienteEncontrado"></span>
+				</div class="form-group">
+                <template v-if="clienteEncontrado == 'ENCONTRADO' " class="">
+                    <div>
+                        <input type="hidden" name="fecha" v-bind:value="fecha">
+                    </div>
+                    <div class="form-group">
+                        <label>Titulo</label>
+                        <input type="text" class="form-control" v-model="titulo" name="titulo" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Nombres</label>
+                        <input type="text" class="form-control" v-model="nombres" name="nombres">
+                    </div>
+                    <div class="form-group">
+                        <label>Apellidos</label>
+                        <input type="text" class="form-control" v-model="apellidos" name="apellidos">
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de identificación</label>
+                        <input type="text" class="form-control" v-model="tipoidentificacion" name="tipoidentificacion" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Dirección</label>
+                        <input type="text" class="form-control" v-model="direccion" name="direccion" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Barrio</label>
+                        <input type="text" class="form-control" v-model="barrio" name="barrio" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Departamento</label>
+                        <input type="text" class="form-control" v-model="departamento" name="departamento" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Ciudad</label>
+                        <input type="text" class="form-control" v-model="ciudad" name="ciudad" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Celular</label>
+                        <input type="text" class="form-control" v-model="celular" name="celular" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefono Fijo</label>
+                        <input type="text" class="form-control" v-model="telefonofijo" name="telefonofijo" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Marca</label>
+                        <select v-model="marca" class="form-control">
+                            <option value=""></option>
+                            <option value="Massey Ferguson">Massey Ferguson</option>
+                        </select>
+                    </div>
+                    <div class="form-group" v-if="marca">
+                        <label>Tipo de Vehiculo</label>
+                        <select v-model="tipovehiculo" v-on:change="img_tipovehiculo" class="form-control">
+                            <option value=""></option>
+                            <option value="Tractores">Tractores</option>
+                            <option value="Cosechadoras">Cosechadoras</option>
+                            <option value="Implementos">Implementos</option>
+                        </select>
+                    </div>
+                    <div v-if="tipovehiculo == 'Tractores' " class="form-group">
+                        <label>Modelo</label>
+                        <select v-model="modelo" v-on:change="img_modelo" class="form-control">
+                            <option value=""></option>
+                            <option v-for="opcion in Tractores" v-bind:value="opcion.value">{{opcion.modelo}}</option>
+                        </select>
+                    </div>
+                    <div v-if="tipovehiculo == 'Cosechadoras' " class="form-group">
+                        <label>Modelo</label>
+                        <select v-model="modelo" v-on:change="img_modelo" class="form-control">
+                            <option value=""></option>
+                            <option v-for="opcion in Cosechadoras" v-bind:value="opcion.value">{{opcion.modelo}}</option>
+                        </select>
+                    </div>
+                    <div v-if="tipovehiculo == 'Implementos' " class="form-group">
+                        <label>Modelo</label>
+                        <select v-model="modelo" v-on:change="img_modelo" class="form-control">
+                            <option value=""></option>
+                            <option v-for="opcion in Implementos" v-bind:value="opcion.value">{{opcion.modelo}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group" v-if="modelo">
+                        <label>Precio</label>
+                        <input type="text" class="form-control" v-model="precio" v-bind:value="precio" disabled="">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>Foto</label>
+                        <div v-if="foto_tipovehiculo">
+                            <img v-bind:src="foto_tipovehiculo" class="img-fluid mx-auto full-width" alt="Foto">
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <h4>Vehiculos e implementos:</h4>
+                    <div v-if="vehiculoImplemento">
+                        <div v-for="item in vehiculoImplementoObject">
+                            <label>Marca: {{item.marca}}</label>
+                            <br>
+                            <label>Tipo de vehiculo: {{item.tipovehiculo}}</label>
+                            <br>
+                            <label>Modelo: {{item.modelo}}</label>
+                            <br>
+                            <label>Precio: {{item.precio}}</label>
+                        </div>
+                        <input type="hidden" name="vehiculoImplemento" v-bind:value="vehiculoImplemento">
+                    </div>
+                    <br>
+                    <div>
+                        <button type="button" class="btn btn-block btn-success" v-on:click="agregarImplemento">Agregar</button>
+                    </div>
+                    <br>
+                    <div>
+                        <button type="submit" class="btn btn-block btn-danger">Generar</button>
+                    </div>
+                    <br>
+                    <br>
+                </template>
+            </form>
+
+            <div id="message"></div>
+		</div>
+    <script src="js/footer_tags.js"></script>
+    <script>
+    	var vm = new Vue({
+    		el:"#app",
+    		data:{
+                fecha:"",
+                titulo:"",
+    			nombres:"",
+                apellidos:"",
+                tipoidentificacion:"",
+                cedula:"",
+                direccion:"",
+                barrio:"",
+                departamento:"",
+                ciudad:"",
+                celular:"",
+                telefonofijo:"",
+    			clienteEncontrado:"",
+
+                marca:"",
+                tipovehiculo:"",
+                modelo:"",
+                precio:"",
+
+                foto_tipovehiculo:"",
+
+                Tractores:[
+                    {modelo:"MF 2600 LR", value:"MF 2600 LR"},
+                    {modelo:"MF 2600 MR", value:"MF 2600 MR"},
+                    {modelo:"MF 2600 HR", value:"MF 2600 HR"}
+                ],
+                Cosechadoras:[
+                    {modelo:"MF 6690", value:"MF 6690"}
+                ],
+                Implementos:[
+                    {modelo:"Arados", value:"Arados", precio:"6000000"},
+                    {modelo:"Cargador frontal", value:"Cargador frontal"},
+                    {modelo:"Cultivadores", value:"Cultivadores"}
+                ],
+
+                vehiculoImplemento:[],
+                vehiculoImplementoObject:[],
+                notificacionproforma: ''
+    		},
+    		methods:{
+    			buscarCliente: function(){
+    				if (this.cedula == '1234') {
+                        this.clienteEncontrado = 'ENCONTRADO'
+                        this.titulo = "Señor"
+                        this.nombres ='Guillermo'
+                        this.apellidos = 'Galindo'
+                        this.tipoidentificacion = "CC"
+                        this.direccion = 'Calle 4 # 6 - 4'
+                        this.barrio = 'Manzanares'
+                        this.departamento = 'Casanare'
+                        this.ciudad = 'Yopal'
+                        this.celular = '3138394344'
+                        this.telefonofijo = '63533932'
+                    }else if (this.cedula != ''){
+                        this.clienteEncontrado = '<label class="label-error">No existe ningún cliente con ese número de identificación</label><p><a href="cliente-nuevo.html" class="btn btn-success">Crear nuevo cliente</a></p>'
+                        }else{
+                            this.clienteEncontrado = ''
+                        }
+
+                },
+                agregarImplemento: function(){
+                    var datos = {
+                        'marca':this.marca,
+                        'tipovehiculo':this.tipovehiculo,
+                        'modelo':this.modelo,
+                        'precio': this.precio
+                    }
+                    //console.log(datos)
+                    //this.vehiculoImplemento.push(datos)
+                    //response = jQuery.parseJSON(datos)
+                    //console.log(response)
+                    this.vehiculoImplementoObject.push(datos)
+
+                    var arr = $.map(datos, function(el) { return el })
+                    //var arr = Object.keys(datos).map(function(k) { return datos[k] });
+                    //console.log(arr)
+                    this.vehiculoImplemento.push(arr)
+
+                    //console.log(this.vehiculoImplemento)
+
+                    this.marca = ""
+                    this.tipovehiculo = ""
+                    this.modelo = ""
+                    this.foto_tipovehiculo = ""
+                },
+                img_tipovehiculo: function(){
+                    this.foto_tipovehiculo = ""
+                    this.precio = ''
+                },
+                img_modelo : function(){
+                    if (this.modelo == 'MF 2600 LR') {
+                        this.foto_tipovehiculo = 'img/MF-2600LR3.jpg'
+                        this.precio = '2000000'
+                    } else if(this.modelo == 'MF 2600 MR'){
+                        this.foto_tipovehiculo = 'img/MF2600MR.jpg'
+                        this.precio = '3000000'
+                    } else if(this.modelo == 'MF 2600 HR'){
+                        this.foto_tipovehiculo = 'img/MF2600HR.jpg'
+                        this.precio = '400000'
+                    } else if(this.modelo == 'MF 6690'){
+                        this.foto_tipovehiculo = 'img/MF6690.jpg'
+                        this.precio = '5000000'
+                    } else if(this.modelo == 'Arados'){
+                        this.foto_tipovehiculo = 'img/arados.jpg'
+                        this.precio = '6000000'
+                    } else if(this.modelo == 'Cargador frontal'){
+                        this.foto_tipovehiculo = 'img/carga.jpg'
+                        this.precio = '700000'
+                    } else if(this.modelo == 'Cultivadores'){
+                        this.foto_tipovehiculo = 'img/cultivadores.jpg'
+                        this.precio = '800000'
+                    } else {
+                        this.foto_tipovehiculo = ""
+                        this.precio = ''
+                    }
+                }
+    		},
+            created(){
+                moment.locale('es')
+                this.fecha = moment().format('DD [de] MMMM [del] YYYY')
+            },
+    		computed:{
+    			habilitarBoton: function(){
+    				if (this.nombres != '' && this.apellidos != '' && this.cedula != '' && this.correo != '' && this.password != '') {
+    					return true
+    				} else {
+    					return false
+    				}
+    			}
+    		}
+    	})
+    </script>
+  </body>
+</html>

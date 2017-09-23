@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Contiene todos los .js y .css que necesita la App (entre ellos Bootstrap) -->
+    <script src="js/header_tags.js"></script>
+    <script>app_title_tag();</script>
+  </head>
+  <body>
+		<!-- Llama al Menú Principal -->
+		<script>menu_principal();</script>
+
+		<div id="app" class="container top-offset-menu">
+            <div class="row">
+                <div class="col-md-6"><h4>Proformas</h4></div>
+                <div class="col-md-6 text-right"><a href="proforma-nueva.html" class="btn btn-success">Nueva</a></div>
+            </div>
+			<br>
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">¡Proforma generada con éxito!</h4>
+                <p>Use los siguientes botones para imprimir, descargar o enviar por e-mail la proforma en formato PDF.</p>
+            </div>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="#" class="btn btn-secondary btn-lg"><i class="fa fa-print" aria-hidden="true"></i> Imprimir</a>
+                <a href="#" class="btn btn-secondary btn-lg"><i class="fa fa-download" aria-hidden="true"></i> Descargar</a>
+                <a href="#" class="btn btn-secondary btn-lg"><i class="fa fa-envelope" aria-hidden="true"></i> Enviar por e-mail</a>
+            </div>
+
+		</div>
+    <script src="js/footer_tags.js"></script>
+    <script>
+    	var vm = new Vue({
+    		el:"#app",
+    		data:{
+    			nombre:"",
+    			usuarioGuardado:""
+    		},
+    		methods:{
+    			guardarUsuario: function(){
+    				this.usuarioGuardado = "guardado"
+    			}
+    		},
+    		computed:{
+    			habilitarBoton: function(){
+    				if (this.nombre != '') {
+    					return true
+    				} else {
+    					return false
+    				}
+    			}
+    		}
+    	})
+    </script>
+  </body>
+</html>
