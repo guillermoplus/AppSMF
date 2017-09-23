@@ -3,7 +3,7 @@ function menu_principal(){
 		<button type="button" class="navbar-toggler navbar-toggler-left" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<a href="inicio.html" title="Ir a inicio" class="navbar-brand text-right"><script>app_title();</script></a>
+		<a href="inicio.html" title="Ir a inicio" class="navbar-brand text-right"><img class="logo-menu" src="img/logo-mf.png" alt="Solo Massey Ferguson" alt="Logo" /></a>
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
 				<li class="nav-item"><a href="proformas.html" title="" class="nav-link"><i class="fa fa-gears" aria-hidden="true"></i> Proformas</a></li>

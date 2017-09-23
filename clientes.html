@@ -13,49 +13,50 @@
 		<script>menu_principal();</script>
 
 		<div id="app" class="container top-offset-menu">
-			<div class="row">
-				<div class="col-md-6"><h4>Clientes</h4></div>
-				<div class="col-md-6 text-right"><a href="cliente-nuevo.html" class="btn btn-success">Nuevo</a></div>
+			<div class="card">
+			    <div class="card-header">
+                    <div class="row">
+        				<div class="col-md-6"><h3 class="card-title">Clientes</h3></div>
+        				<div class="col-md-6 text-right"><a href="cliente-nuevo.html" class="btn btn-success">Nuevo</a></div>
+        			</div>
+			    </div>
+                <div class="card-body">
+        			<table class="table table-responsive">
+        				<thead>
+        					<tr>
+        						<th>C.C. / NIT.</th>
+        						<th>Nombre</th>
+        						<th>Apellidos</th>
+        						<th>Teléfono</th>
+        						<th>Opciones</th>
+        					</tr>
+        				</thead>
+        				<tbody>
+        					<tr>
+        						<td>123456789</td>
+        						<td>Eugenio</td>
+        						<td>Gómez</td>
+        						<td>3214785698</td>
+        						<td><a href="#" class="btn btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+        					</tr>
+        					<tr>
+        						<td>987654321</td>
+        						<td>Aldair</td>
+        						<td>Guarupe</td>
+        						<td>3102365874</td>
+        						<td><a href="#" class="btn btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+        					</tr>
+        					<tr>
+        						<td>9999999-3</td>
+        						<td>Cosechadora Oriente SAS</td>
+        						<td></td>
+        						<td>6325969</td>
+        						<td><a href="#" class="btn btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+        					</tr>
+        				</tbody>
+        			</table>
+                </div>
 			</div>
-			<br>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Tipo</th>
-						<th>Número</th>
-						<th>Nombre</th>
-						<th>Apellidos</th>
-						<th>Teléfono</th>
-						<th>Opciones</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>C.C.</td>
-						<td>123456789</td>
-						<td>Eugenio</td>
-						<td>Gómez</td>
-						<td>3214785698</td>
-						<td><a href="#" class="btn btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-					</tr>
-					<tr>
-						<td>C.C.</td>
-						<td>987654321</td>
-						<td>Aldair</td>
-						<td>Guarupe</td>
-						<td>3102365874</td>
-						<td><a href="#" class="btn btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-					</tr>
-					<tr>
-						<td>NIT.</td>
-						<td>9999999-3</td>
-						<td>Cosechadora Oriente SAS</td>
-						<td></td>
-						<td>6325969</td>
-						<td><a href="#" class="btn btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-					</tr>
-				</tbody>
-			</table>
 		</div>
     <script src="js/footer_tags.js"></script>
     <script>

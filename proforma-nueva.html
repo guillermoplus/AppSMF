@@ -13,132 +13,144 @@
         <script>menu_principal();</script>
 
 		<div id="app" class="container top-offset-menu">
-			<h4>Nueva proforma</h4>
-			<form class="form-group" method="post" action="mpdf-proforma.php" enctype="multipart/form-data">
-				<div class="form-group">
-					<label>Número de identificación (C.C. o NIT.)</label>
-					<input type="text" v-model="cedula" name="cedula" v-on:keyup="buscarCliente" class="form-control">
-                    <span v-if="clienteEncontrado != 'ENCONTRADO' && clienteEncontrado != '' " v-html="clienteEncontrado"></span>
-				</div class="form-group">
-                <template v-if="clienteEncontrado == 'ENCONTRADO' " class="">
-                    <div>
-                        <input type="hidden" name="fecha" v-bind:value="fecha">
-                    </div>
-                    <div class="form-group">
-                        <label>Titulo</label>
-                        <input type="text" class="form-control" v-model="titulo" name="titulo" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label>Nombres</label>
-                        <input type="text" class="form-control" v-model="nombres" name="nombres">
-                    </div>
-                    <div class="form-group">
-                        <label>Apellidos</label>
-                        <input type="text" class="form-control" v-model="apellidos" name="apellidos">
-                    </div>
-                    <div class="form-group">
-                        <label>Tipo de identificación</label>
-                        <input type="text" class="form-control" v-model="tipoidentificacion" name="tipoidentificacion" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label>Dirección</label>
-                        <input type="text" class="form-control" v-model="direccion" name="direccion" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label>Barrio</label>
-                        <input type="text" class="form-control" v-model="barrio" name="barrio" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label>Departamento</label>
-                        <input type="text" class="form-control" v-model="departamento" name="departamento" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label>Ciudad</label>
-                        <input type="text" class="form-control" v-model="ciudad" name="ciudad" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label>Celular</label>
-                        <input type="text" class="form-control" v-model="celular" name="celular" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label>Telefono Fijo</label>
-                        <input type="text" class="form-control" v-model="telefonofijo" name="telefonofijo" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label>Marca</label>
-                        <select v-model="marca" class="form-control">
-                            <option value=""></option>
-                            <option value="Massey Ferguson">Massey Ferguson</option>
-                        </select>
-                    </div>
-                    <div class="form-group" v-if="marca">
-                        <label>Tipo de Vehiculo</label>
-                        <select v-model="tipovehiculo" v-on:change="img_tipovehiculo" class="form-control">
-                            <option value=""></option>
-                            <option value="Tractores">Tractores</option>
-                            <option value="Cosechadoras">Cosechadoras</option>
-                            <option value="Implementos">Implementos</option>
-                        </select>
-                    </div>
-                    <div v-if="tipovehiculo == 'Tractores' " class="form-group">
-                        <label>Modelo</label>
-                        <select v-model="modelo" v-on:change="img_modelo" class="form-control">
-                            <option value=""></option>
-                            <option v-for="opcion in Tractores" v-bind:value="opcion.value">{{opcion.modelo}}</option>
-                        </select>
-                    </div>
-                    <div v-if="tipovehiculo == 'Cosechadoras' " class="form-group">
-                        <label>Modelo</label>
-                        <select v-model="modelo" v-on:change="img_modelo" class="form-control">
-                            <option value=""></option>
-                            <option v-for="opcion in Cosechadoras" v-bind:value="opcion.value">{{opcion.modelo}}</option>
-                        </select>
-                    </div>
-                    <div v-if="tipovehiculo == 'Implementos' " class="form-group">
-                        <label>Modelo</label>
-                        <select v-model="modelo" v-on:change="img_modelo" class="form-control">
-                            <option value=""></option>
-                            <option v-for="opcion in Implementos" v-bind:value="opcion.value">{{opcion.modelo}}</option>
-                        </select>
-                    </div>
-                    <div class="form-group" v-if="modelo">
-                        <label>Precio</label>
-                        <input type="text" class="form-control" v-model="precio" v-bind:value="precio" disabled="">
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <label>Foto</label>
-                        <div v-if="foto_tipovehiculo">
-                            <img v-bind:src="foto_tipovehiculo" class="img-fluid mx-auto full-width" alt="Foto">
+			<div class="card">
+			    <div class="card-header">
+                    <h3 class="card-title">Nueva proforma</h3>
+			    </div>
+                <div class="card-body mt-2">
+                    <div class="row">
+                        <div class="container">
+                            <div class="col-md-12">
+                                <form class="form-group" method="post" action="mpdf-proforma.php" enctype="multipart/form-data">
+                    				<div class="form-group">
+                    					<label>Número de identificación (C.C. o NIT.)</label>
+                    					<input type="text" v-model="cedula" name="cedula" v-on:keyup="buscarCliente" class="form-control">
+                                        <span v-if="clienteEncontrado != 'ENCONTRADO' && clienteEncontrado != '' " v-html="clienteEncontrado"></span>
+                    				</div class="form-group">
+                                    <template v-if="clienteEncontrado == 'ENCONTRADO' " class="">
+                                        <div>
+                                            <input type="hidden" name="fecha" v-bind:value="fecha">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Titulo</label>
+                                            <input type="text" class="form-control" v-model="titulo" name="titulo" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nombres</label>
+                                            <input type="text" class="form-control" v-model="nombres" name="nombres">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Apellidos</label>
+                                            <input type="text" class="form-control" v-model="apellidos" name="apellidos">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Tipo de identificación</label>
+                                            <input type="text" class="form-control" v-model="tipoidentificacion" name="tipoidentificacion" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Dirección</label>
+                                            <input type="text" class="form-control" v-model="direccion" name="direccion" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Barrio</label>
+                                            <input type="text" class="form-control" v-model="barrio" name="barrio" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Departamento</label>
+                                            <input type="text" class="form-control" v-model="departamento" name="departamento" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Ciudad</label>
+                                            <input type="text" class="form-control" v-model="ciudad" name="ciudad" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Celular</label>
+                                            <input type="text" class="form-control" v-model="celular" name="celular" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Telefono Fijo</label>
+                                            <input type="text" class="form-control" v-model="telefonofijo" name="telefonofijo" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Marca</label>
+                                            <select v-model="marca" class="form-control">
+                                                <option value=""></option>
+                                                <option value="Massey Ferguson">Massey Ferguson</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group" v-if="marca">
+                                            <label>Tipo de Vehiculo</label>
+                                            <select v-model="tipovehiculo" v-on:change="img_tipovehiculo" class="form-control">
+                                                <option value=""></option>
+                                                <option value="Tractores">Tractores</option>
+                                                <option value="Cosechadoras">Cosechadoras</option>
+                                                <option value="Implementos">Implementos</option>
+                                            </select>
+                                        </div>
+                                        <div v-if="tipovehiculo == 'Tractores' " class="form-group">
+                                            <label>Modelo</label>
+                                            <select v-model="modelo" v-on:change="img_modelo" class="form-control">
+                                                <option value=""></option>
+                                                <option v-for="opcion in Tractores" v-bind:value="opcion.value">{{opcion.modelo}}</option>
+                                            </select>
+                                        </div>
+                                        <div v-if="tipovehiculo == 'Cosechadoras' " class="form-group">
+                                            <label>Modelo</label>
+                                            <select v-model="modelo" v-on:change="img_modelo" class="form-control">
+                                                <option value=""></option>
+                                                <option v-for="opcion in Cosechadoras" v-bind:value="opcion.value">{{opcion.modelo}}</option>
+                                            </select>
+                                        </div>
+                                        <div v-if="tipovehiculo == 'Implementos' " class="form-group">
+                                            <label>Modelo</label>
+                                            <select v-model="modelo" v-on:change="img_modelo" class="form-control">
+                                                <option value=""></option>
+                                                <option v-for="opcion in Implementos" v-bind:value="opcion.value">{{opcion.modelo}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group" v-if="modelo">
+                                            <label>Precio</label>
+                                            <input type="text" class="form-control" v-model="precio" v-bind:value="precio" disabled="">
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <label>Foto</label>
+                                            <div v-if="foto_tipovehiculo">
+                                                <img v-bind:src="foto_tipovehiculo" class="img-fluid mx-auto full-width" alt="Foto">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <h4>Vehiculos e implementos:</h4>
+                                        <div v-if="vehiculoImplemento">
+                                            <div v-for="item in vehiculoImplementoObject">
+                                                <label>Marca: {{item.marca}}</label>
+                                                <br>
+                                                <label>Tipo de vehiculo: {{item.tipovehiculo}}</label>
+                                                <br>
+                                                <label>Modelo: {{item.modelo}}</label>
+                                                <br>
+                                                <label>Precio: {{item.precio}}</label>
+                                            </div>
+                                            <input type="hidden" name="vehiculoImplemento" v-bind:value="vehiculoImplemento">
+                                        </div>
+                                        <br>
+                                        <div>
+                                            <button type="button" class="btn btn-block btn-success" v-on:click="agregarImplemento">Agregar</button>
+                                        </div>
+                                        <br>
+                                        <div>
+                                            <button type="submit" class="btn btn-block btn-danger">Generar</button>
+                                        </div>
+                                        <br>
+                                        <br>
+                                    </template>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    <br>
-                    <br>
-                    <h4>Vehiculos e implementos:</h4>
-                    <div v-if="vehiculoImplemento">
-                        <div v-for="item in vehiculoImplementoObject">
-                            <label>Marca: {{item.marca}}</label>
-                            <br>
-                            <label>Tipo de vehiculo: {{item.tipovehiculo}}</label>
-                            <br>
-                            <label>Modelo: {{item.modelo}}</label>
-                            <br>
-                            <label>Precio: {{item.precio}}</label>
-                        </div>
-                        <input type="hidden" name="vehiculoImplemento" v-bind:value="vehiculoImplemento">
-                    </div>
-                    <br>
-                    <div>
-                        <button type="button" class="btn btn-block btn-success" v-on:click="agregarImplemento">Agregar</button>
-                    </div>
-                    <br>
-                    <div>
-                        <button type="submit" class="btn btn-block btn-danger">Generar</button>
-                    </div>
-                    <br>
-                    <br>
-                </template>
-            </form>
+                </div>
+			</div>
 
             <div id="message"></div>
 		</div>

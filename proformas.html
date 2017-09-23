@@ -13,46 +13,50 @@
 		<script>menu_principal();</script>
 
 		<div id="app" class="container top-offset-menu">
-            <div class="row">
-                <div class="col-md-6"><h4>Proformas</h4></div>
-                <div class="col-md-6 text-right"><a href="proforma-nueva.html" class="btn btn-success">Nueva</a></div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6"><h4 class="card-title">Proformas</h4></div>
+                        <div class="col-md-6 text-right"><a href="proforma-nueva.html" class="btn btn-success">Nueva</a></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Valor</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>27/07/2017</td>
+                                <td>Aldair</td>
+                                <td>Guarupe</td>
+                                <td>$ 105.266.000</td>
+                                <td><a href="#" class="btn btn-secondary"><i class="fa fa-download" aria-hidden="true"></i> PDF</a></td>
+                            </tr>
+                            <tr>
+                                <td>15/07/2017</td>
+                                <td>Guillermo</td>
+                                <td>Galindo</td>
+                                <td>$ 92.600.000</td>
+                                <td><a href="#" class="btn btn-secondary"><i class="fa fa-download" aria-hidden="true"></i> PDF</a></td>
+                            </tr>
+                            <tr>
+                                <td>08/06/2017</td>
+                                <td>Eugenio</td>
+                                <td>Gómez</td>
+                                <td>$ 55.700.000</td>
+                                <td><a href="#" class="btn btn-secondary"><i class="fa fa-download" aria-hidden="true"></i> PDF</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-			<br>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Fecha</th>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Valor</th>
-                        <th>Opciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>27/07/2017</td>
-                        <td>Aldair</td>
-                        <td>Guarupe</td>
-                        <td>$ 105.266.000</td>
-                        <td><a href="#" class="btn btn-secondary"><i class="fa fa-download" aria-hidden="true"></i> PDF</a></td>
-                    </tr>
-                    <tr>
-                        <td>15/07/2017</td>
-                        <td>Guillermo</td>
-                        <td>Galindo</td>
-                        <td>$ 92.600.000</td>
-                        <td><a href="#" class="btn btn-secondary"><i class="fa fa-download" aria-hidden="true"></i> PDF</a></td>
-                    </tr>
-                    <tr>
-                        <td>08/06/2017</td>
-                        <td>Eugenio</td>
-                        <td>Gómez</td>
-                        <td>$ 55.700.000</td>
-                        <td><a href="#" class="btn btn-secondary"><i class="fa fa-download" aria-hidden="true"></i> PDF</a></td>
-                    </tr>
-                </tbody>
-            </table>
-
 		</div>
     <script src="js/footer_tags.js"></script>
     <script>

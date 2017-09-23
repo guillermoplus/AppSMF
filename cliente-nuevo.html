@@ -13,70 +13,82 @@
 		<script>menu_principal();</script>
 
 		<div id="app" class="container top-offset-menu">
-			<h4>Nuevo cliente</h4>
-			<form v-on:submit.prevent="agregarUsuario">
-				<div class="form-group">
-					<label>Tipo de identificacion</label>
-					<select v-model="tipoidentificacion" class="form-control">
-						<option value="cc">C.C.</option>
-						<option value="nit">NIT.</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label>Número de indentificación</label>
-					<input type="text" v-model="cedula" class="form-control">
-				</div>
-				<div class="form-group">
-					<label>Título</label>
-					<select v-model="titulo" class="form-control">
-						<option value="Señor">Señor</option>
-						<option value="Señora">Señora</option>
-						<option value="Señores">Señores</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label>Nombres</label>
-					<input type="text" v-model="nombres" class="form-control">
-				</div>
-				<div class="form-group">
-					<label>Apellidos</label>
-					<input type="text" v-model="apellidos" class="form-control">
-				</div>
-				<div class="form-group">
-					<label>Dirección</label>
-					<input type="text" v-model="direccion" class="form-control">
-				</div>
-				<div class="form-group">
-					<label>Barrio</label>
-					<input type="text" v-model="barrio" class="form-control">
-				</div>
-				<div class="form-group">
-					<label>Departamento</label>
-					<select v-model="departamento" class="form-control">
-						<option value="Casanare">Casanare</option>
-						<option value="Meta">Meta</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label>Ciudad</label>
-					<select v-model="ciudad" class="form-control">
-						<option value="Yopal">Yopal</option>
-						<option value="Aguazul">Aguazul</option>
-						<option value="Villavicencio">Villavicencio</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label>Celular</label>
-					<input type="text" v-model="celular" class="form-control">
-				</div>
-				<div class="form-group">
-					<label>Telefono fijo</label>
-					<input type="text" v-model="telefonofijo" class="form-control">
-				</div>
-				<div class="form-group">
-					<button class="btn btn-danger btn-block" v-on:click="guardarUsuario" :disabled="!habilitarBoton">Guardar</button>
-				</div>
-			</form>
+			<div class="card">
+			    <div class="card-header">
+			        <h3 class="card-title">Nuevo cliente</h3>
+			    </div>
+                <div class="card- mt-2">
+        			<div class="container">
+        			    <div class="row">
+        			        <div class="col-md-12">
+                                <form v-on:submit.prevent="agregarUsuario">
+                    				<div class="form-group">
+                    					<label>Tipo de identificacion</label>
+                    					<select v-model="tipoidentificacion" class="form-control">
+                    						<option value="cc">C.C.</option>
+                    						<option value="nit">NIT.</option>
+                    					</select>
+                    				</div>
+                    				<div class="form-group">
+                    					<label>Número de indentificación</label>
+                    					<input type="text" v-model="cedula" class="form-control">
+                    				</div>
+                    				<div class="form-group">
+                    					<label>Título</label>
+                    					<select v-model="titulo" class="form-control">
+                    						<option value="Señor">Señor</option>
+                    						<option value="Señora">Señora</option>
+                    						<option value="Señores">Señores</option>
+                    					</select>
+                    				</div>
+                    				<div class="form-group">
+                    					<label>Nombres</label>
+                    					<input type="text" v-model="nombres" class="form-control">
+                    				</div>
+                    				<div class="form-group">
+                    					<label>Apellidos</label>
+                    					<input type="text" v-model="apellidos" class="form-control">
+                    				</div>
+                    				<div class="form-group">
+                    					<label>Dirección</label>
+                    					<input type="text" v-model="direccion" class="form-control">
+                    				</div>
+                    				<div class="form-group">
+                    					<label>Barrio</label>
+                    					<input type="text" v-model="barrio" class="form-control">
+                    				</div>
+                    				<div class="form-group">
+                    					<label>Departamento</label>
+                    					<select v-model="departamento" class="form-control">
+                    						<option value="Casanare">Casanare</option>
+                    						<option value="Meta">Meta</option>
+                    					</select>
+                    				</div>
+                    				<div class="form-group">
+                    					<label>Ciudad</label>
+                    					<select v-model="ciudad" class="form-control">
+                    						<option value="Yopal">Yopal</option>
+                    						<option value="Aguazul">Aguazul</option>
+                    						<option value="Villavicencio">Villavicencio</option>
+                    					</select>
+                    				</div>
+                    				<div class="form-group">
+                    					<label>Celular</label>
+                    					<input type="text" v-model="celular" class="form-control">
+                    				</div>
+                    				<div class="form-group">
+                    					<label>Telefono fijo</label>
+                    					<input type="text" v-model="telefonofijo" class="form-control">
+                    				</div>
+                    				<div class="form-group">
+                    					<button class="btn btn-danger btn-block" v-on:click="guardarUsuario" :disabled="!habilitarBoton">Guardar</button>
+                    				</div>
+                    			</form>
+        			        </div>
+        			    </div>
+        			</div>
+                </div>
+			</div>
 		</div>
     <script src="js/footer_tags.js"></script>
     <script>
