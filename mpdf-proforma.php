@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 header("Content-type:application/pdf");
 
@@ -29,9 +29,9 @@ $resultado = count($arreglo);
 
 $numeroVehiculoImplemento = $resultado / 4; //Numero de implementos adquiridos
 
-for ($i=0; $i < $numeroVehiculoImplemento; $i++) { 
+for ($i=0; $i < $numeroVehiculoImplemento; $i++) {
 
-	for ($j= ($i * 3); $j <  (($i+1) * 3); $j++) { 
+	for ($j= ($i * 3); $j <  (($i+1) * 3); $j++) {
 		$arreglo[$j].' <br>';
 	}
 }
@@ -55,9 +55,9 @@ $html = '
 	<p>Atendemos su amable solicitud, cotizándole a continuación el siguiente equipo de aplicación agrícola. </p>
 	<br> COMPRAS <br><table class="table"><tr><td>Marca</td><td>Tipo de vehiculo</td><td>modelo</td><td>Precio</td></tr>';
 
-		for ($i=0; $i < $numeroVehiculoImplemento; $i++) { 
+		for ($i=0; $i < $numeroVehiculoImplemento; $i++) {
 			$html = $html . '<tr> <br> ';
-			for ($j= ($i * 4); $j <  (($i+1) * 4); $j++) { 
+			for ($j= ($i * 4); $j <  (($i+1) * 4); $j++) {
 				$html =  $html .'<td>' .$arreglo[$j].'</td>';
 				if (((($i + 1) *4) -1) == $j) {
 					$total = $total + $arreglo[$j];
@@ -71,7 +71,7 @@ $html = '
 	<br>
 	<p>FORMA DE PAGO</p>
 	<br>
-	
+
 	<p>Préstamo línea FINAGRO o LEASING: A tramitar por intermedio de un banco comercial del país.
 	GARANTIA:
 	MASSEY FERGUSON concede para sus productos una garantía de un (1) año, excluyendo dicha garantía los daños ocasionados por uso inadecuado de la máquina, mal manejo y mal mantenimiento.
@@ -95,7 +95,7 @@ $html = '
 
 include("mpdf60/mpdf.php");
 
-$mpdf=new mPDF('c','Letter'); 
+$mpdf=new mPDF('c','Letter');
 
 $mpdf->SetDisplayMode('fullpage');
 

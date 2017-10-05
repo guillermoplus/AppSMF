@@ -10,176 +10,231 @@
   </head>
   <body>
 		<!-- Llama al Menú Principal -->
-        <script>menu_principal();</script>
+    <script>menu_principal();</script>
 
-		<div id="app" class="container top-offset-menu">
-			<div class="card">
-			    <div class="card-header">
-                    <h3 class="card-title">Nueva proforma</h3>
-			    </div>
-                <div class="card-body mt-2">
-                    <div class="row">
-                        <div class="container">
-                            <div class="col-md-12">
-                                <form class="form-group" method="post" action="mpdf-proforma.php" enctype="multipart/form-data">
-                                    <h5 class="card-title font-weight-bold mt-2">Datos cliente</h5>
-                                    <div class="form-group">
-                    					<label>Número de identificación (C.C. o NIT.)</label>
-                    					<input type="text" v-model="cedula" name="cedula" v-on:keyup="buscarCliente" class="form-control">
-                                        <span v-if="clienteEncontrado != 'ENCONTRADO' && clienteEncontrado != ''" v-html="clienteEncontrado"></span>
-                    				</div>
-                                    <template v-if="clienteEncontrado == 'ENCONTRADO' " class="">
-                                        <div>
-                                            <input type="hidden" name="fecha" v-bind:value="fecha">
-                                        </div>
+	<div id="app" class="container top-offset-menu">
+		<div class="card">
+		    <div class="card-header">
+                <h3 class="card-title">Nueva proforma</h3>
+		    </div>
+            <div class="card-body mt-2">
+                <div class="row">
+                    <div class="container">
+                        <div class="col-md-12">
+                            <form class="form-group" method="post" action="mpdf-proforma.php" enctype="multipart/form-data">
+                                <h5 class="card-title font-weight-bold mt-2">Datos cliente</h5>
+                                <div class="form-group">
+                					<label>Número de identificación (C.C. o NIT.)</label>
+                					<input type="text" v-model="cedula" name="cedula" v-on:keyup="buscarCliente" class="form-control">
+                                    <span v-if="clienteEncontrado != 'ENCONTRADO' && clienteEncontrado != ''" v-html="clienteEncontrado"></span>
+                				</div>
+
+                                <template v-if="clienteEncontrado == 'ENCONTRADO' " class="">
+                                <div>
+                                    <input type="hidden" name="fecha" v-bind:value="fecha">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Titulo</label>
                                             <input type="text" class="form-control" v-model="titulo" name="titulo" readonly>
                                         </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Nombres</label>
-                                            <input type="text" class="form-control" v-model="nombres" name="nombres">
+                                            <label>Nombre</label>
+                                            <input type="text" class="form-control" v-model="nombres" name="nombres" readonly>
                                         </div>
+                                    </div>
+                                    <div class="col-md-4">
+
                                         <div class="form-group">
                                             <label>Apellidos</label>
-                                            <input type="text" class="form-control" v-model="apellidos" name="apellidos">
+                                            <input type="text" class="form-control" v-model="apellidos" name="apellidos" readonly>
                                         </div>
-                                        <div class="form-group">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- <div class="form-group">
                                             <label>Tipo de identificación</label>
                                             <input type="text" class="form-control" v-model="tipoidentificacion" name="tipoidentificacion" readonly>
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
                                             <label>Dirección</label>
                                             <input type="text" class="form-control" v-model="direccion" name="direccion" readonly>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Barrio</label>
                                             <input type="text" class="form-control" v-model="barrio" name="barrio" readonly>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Departamento</label>
                                             <input type="text" class="form-control" v-model="departamento" name="departamento" readonly>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Ciudad</label>
                                             <input type="text" class="form-control" v-model="ciudad" name="ciudad" readonly>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Celular</label>
                                             <input type="text" class="form-control" v-model="celular" name="celular" readonly>
                                         </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Telefono Fijo</label>
                                             <input type="text" class="form-control" v-model="telefonofijo" name="telefonofijo" readonly>
                                         </div>
-                                        <hr class="mt-5 mb-5">
-                                        <h5 class="card-title font-weight-bold">Datos vehículos</h5>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Correo electrónico</label>
+                                            <input type="email" class="form-control" v-model="email" name="email" readonly>
+                                        </div>
+                                    </div>
+                                </div>
 
+
+                                <hr class="mt-5 mb-5">
+                                <h5 class="card-title font-weight-bold">Datos vehículos</h5>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Marca</label>
+                                            <select v-model="marca" class="form-control">
+                                                <option value=""></option>
+                                                <option value="Massey Ferguson">Massey Ferguson</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group" v-if="marca">
+                                            <label>Tipo de Vehiculo</label>
+                                            <select v-model="tipovehiculo" v-on:change="img_tipovehiculo" class="form-control">
+                                                <option value=""></option>
+                                                <option value="Tractores">Tractores</option>
+                                                <option value="Cosechadoras">Cosechadoras</option>
+                                                <option value="Implementos">Implementos</option>
+                                            </select>
+                                        </div>
+
+                                        <div v-if="tipovehiculo == 'Tractores' " class="form-group">
+                                            <label>Modelo</label>
+                                            <select v-model="modelo" v-on:change="img_modelo" class="form-control">
+                                                <option value=""></option>
+                                                <option v-for="opcion in Tractores" v-bind:value="opcion.value">{{opcion.modelo}}</option>
+                                            </select>
+                                        </div>
+
+                                        <div v-if="tipovehiculo == 'Cosechadoras' " class="form-group">
+                                            <label>Modelo</label>
+                                            <select v-model="modelo" v-on:change="img_modelo" class="form-control">
+                                                <option value=""></option>
+                                                <option v-for="opcion in Cosechadoras" v-bind:value="opcion.value">{{opcion.modelo}}</option>
+                                            </select>
+                                        </div>
+
+                                        <div v-if="tipovehiculo == 'Implementos' " class="form-group">
+                                            <label>Modelo</label>
+                                            <select v-model="modelo" v-on:change="img_modelo" class="form-control">
+                                                <option value=""></option>
+                                                <option v-for="opcion in Implementos" v-bind:value="opcion.value">{{opcion.modelo}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div v-if="precio" class="form-group">
+                                            <label>Precio</label>
+                                            <input type="text" class="form-control" v-model="precio" v-bind:value="precio" disabled="">
+                                        </div>
+
+                                        <div v-if="precio" class="form-group">
+                                            <label>Foto</label>
+                                            <div v-if="foto_tipovehiculo">
+                                                <img v-bind:src="foto_tipovehiculo" class="img-fluid mx-auto full-width" alt="Foto" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Marca</label>
-                                                    <select v-model="marca" class="form-control">
-                                                        <option value=""></option>
-                                                        <option value="Massey Ferguson">Massey Ferguson</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <div class="form-group" v-if="marca">
-                                                    <label>Tipo de Vehiculo</label>
-                                                    <select v-model="tipovehiculo" v-on:change="img_tipovehiculo" class="form-control">
-                                                        <option value=""></option>
-                                                        <option value="Tractores">Tractores</option>
-                                                        <option value="Cosechadoras">Cosechadoras</option>
-                                                        <option value="Implementos">Implementos</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <div v-if="tipovehiculo == 'Tractores' " class="form-group">
-                                                    <label>Modelo</label>
-                                                    <select v-model="modelo" v-on:change="img_modelo" class="form-control">
-                                                        <option value=""></option>
-                                                        <option v-for="opcion in Tractores" v-bind:value="opcion.value">{{opcion.modelo}}</option>
-                                                    </select>
-                                                </div>
-
-                                                <div v-if="tipovehiculo == 'Cosechadoras' " class="form-group">
-                                                    <label>Modelo</label>
-                                                    <select v-model="modelo" v-on:change="img_modelo" class="form-control">
-                                                        <option value=""></option>
-                                                        <option v-for="opcion in Cosechadoras" v-bind:value="opcion.value">{{opcion.modelo}}</option>
-                                                    </select>
-                                                </div>
-
-                                                <div v-if="tipovehiculo == 'Implementos' " class="form-group">
-                                                    <label>Modelo</label>
-                                                    <select v-model="modelo" v-on:change="img_modelo" class="form-control">
-                                                        <option value=""></option>
-                                                        <option v-for="opcion in Implementos" v-bind:value="opcion.value">{{opcion.modelo}}</option>
-                                                    </select>
-                                                </div>
-
-                                                <div v-if="precio" class="form-group">
-                                                    <label>Precio</label>
-                                                    <input type="text" class="form-control" v-model="precio" v-bind:value="precio" disabled="">
-                                                </div>
-
-                                                <div v-if="precio" class="form-group">
-                                                    <label>Foto</label>
-                                                    <div v-if="foto_tipovehiculo">
-                                                        <img v-bind:src="foto_tipovehiculo" class="img-fluid mx-auto full-width" alt="Foto" />
-                                                    </div>
-                                                </div>
-
-                                                <button type="button" v-if="precio" class="btn btn-block btn-success" v-on:click="agregarImplemento">Agregar elemento</button>
-                                            </div>
+                                            <div class="col-md-3"><button type="button" v-if="precio" class="btn btn-success btn-block" v-on:click="agregarImplemento">Agregar</button></div>
+                                            <div class="col-md-3"><button type="button" v-if="precio" class="btn btn-danger btn-block" v-on:click="limpiarElemento">Limpiar</button></div>
+                                            <div class="col-md-3">&nbsp;</div>
+                                            <div class="col-md-3">&nbsp;</div>
                                         </div>
+                                    </div>
+                                </div>
 
-                                        <hr class="mt-5 mb-5">
+                                <hr class="mt-5 mb-5">
 
-                                        <h5 class="card-title font-weight-bold">Elementos de la proforma</h5>
+                                <h5 class="card-title font-weight-bold">Resumen</h5>
 
-                                            <table class="table table-responsive">
-                                                <thead class="thead-inverse">
-                                                    <tr>
-                                                        <th>Marca</th>
-                                                        <th>Tipo</th>
-                                                        <th>Modelo</th>
-                                                        <th>Precio</th>
-                                                        <th>Opciones</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody v-if="vehiculoImplemento">
-                                                    <div v-for="item in vehiculoImplementoObject">
-                                                        <tr v-if="item">
-                                                            <td>{{ item.marca }}</td>
-                                                            <td>{{ item.tipovehiculo }}</td>
-                                                            <td>{{ item.modelo }}</td>
-                                                            <td>{{ item.precio }}</td>
-                                                            <td class="text-center"><a href="#" id="btnEliminarElemento" class="btn btn-danger" value="Eliminar"><i class="fa fa-close"></i></a></td>
-                                                        </tr>
-                                                    </div>
-                                                    <input type="hidden" name="vehiculoImplemento" v-bind:value="vehiculoImplemento">
-                                                </tbody>
-                                            </table>
+                                <!-- <div v-if="vehiculoImplemento"> -->
+                                <dl class="row" v-for="item in vehiculoImplementoObject" :key="item.key">
+                                      <dt class="col-md-6">Marca</dt>
+                                      <dd class="col-md-6">{{item.marca}}</dd>
+                                      <dt class="col-md-6">Tipo</dt>
+                                      <dd class="col-md-6">{{item.tipovehiculo}}</dd>
+                                      <dt class="col-md-6">Modelo</dt>
+                                      <dd class="col-md-6">{{item.modelo}}</dd>
+                                      <dt class="col-md-6">Precio</dt>
+                                      <dd class="col-md-6">{{item.precio}}</dd>
 
-                                        <div>
-                                            <button type="submit" class="btn btn-block btn-success">Generar</button>
+                                    </dl>
+                                <!-- </div> -->
+
+                                <!-- <table class="table table-responsive">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>Marca</th>
+                                            <th>Tipo</th>
+                                            <th>Modelo</th>
+                                            <th>Precio</th>
+                                            <th>Opciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody v-if="vehiculoImplemento">
+                                        <div v-for="item in vehiculoImplementoObject">
+                                            <tr v-if="item">
+                                                <td>{{ item.marca }}</td>
+                                                <td>{{ item.tipovehiculo }}</td>
+                                                <td>{{ item.modelo }}</td>
+                                                <td>{{ item.precio }}</td>
+                                                <td class="text-center"><a href="#" id="btnEliminarElemento" class="btn btn-danger" value="Eliminar"><i class="fa fa-close"></i></a></td>
+                                            </tr>
                                         </div>
-                                    </template>
-                                </form>
-                            </div>
+                                        <input type="hidden" name="vehiculoImplemento" v-bind:value="vehiculoImplemento">
+                                    </tbody>
+                                </table> -->
+
+                                <div v-if="vehiculoImplemento">
+                                    <button id="btnGenerarProforma" type="submit" class="btn btn-block btn-success" disabled>Generar</button>
+                                </div>
+                                </template>
+                            </form>
                         </div>
                     </div>
                 </div>
-			</div>
-
-            <div id="message"></div>
+            </div>
 		</div>
+
+        <div id="message"></div>
+	</div>
     <script src="js/footer_tags.js"></script>
     <script>
     	var vm = new Vue({
@@ -239,7 +294,7 @@
                         this.celular = '3138394344'
                         this.telefonofijo = '63533932'
                     }else if (this.cedula != ''){
-                        this.clienteEncontrado = '<label class="label-error">No existe ningún cliente con ese número de identificación</label><p><a href="cliente-nuevo.html" class="btn btn-success">Crear nuevo cliente</a></p>'
+                        this.clienteEncontrado = '<label class="label-error">No existe ningún cliente con ese número de identificación</label><p><a href="cliente-nuevo.html" class="btn btn-success"><i class="fa fa-plus"></i> Crear nuevo cliente</a></p>'
                         }else{
                             this.clienteEncontrado = ''
                         }
@@ -252,6 +307,8 @@
                         'modelo':this.modelo,
                         'precio': this.precio
                     }
+
+                    $("#btnGenerarProforma").removeAttr('disabled')
                     //console.log(datos)
                     //this.vehiculoImplemento.push(datos)
                     //response = jQuery.parseJSON(datos)

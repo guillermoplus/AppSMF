@@ -1,0 +1,15 @@
+{
+  "name": "AppSoloMasseyFerguson",
+  "version": "1.0.0",
+  "description": "App SoloMasseyFerguson Project",
+  "main": "index.html",
+  "repository": "https://github.com/luisgal93/AppSMF",
+  "author": "Guillermo Galindo <guillermoplus@hotmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "4.0.0-beta",
+    "jquery": "3.2.1",
+    "vue": "2.4.4"
+  }
+}
